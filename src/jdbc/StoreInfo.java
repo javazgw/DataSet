@@ -1,8 +1,5 @@
 package jdbc;
 
-import com.base.myproject.client.busi.BaseStore;
-import com.base.myproject.client.system.Env;
-import com.extjs.gxt.ui.client.widget.toolbar.PagingToolBar;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -44,25 +41,20 @@ import java.util.HashMap;
  */
 public class StoreInfo implements Serializable {
 
-
-
-	
-
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -9217089346351015561L;
 	String sql = null;
 	transient String filter = null;
-	transient com.base.myproject.client.busi.BaseStore parent = null;
+
 	transient String[] linkparentcolumns = null; // 与主表关联的字段 (主表字段)
 	transient String[] linkparent_chile_columns = null; // 与主表关联的字段（子表字段）
 	 String advsearch = null; // 高级搜索
 	transient String targetcolumn = ""; // 高级搜索瞄准字段
 	transient String autoinccolumn = null; // 自增字段
 	
-	transient PagingToolBar pagetoolbar = null; // 分页,如果传入可以在basegridpanel中使用到分页
-		
+
 
 	 String sortcolumn = null; // 提交到服务器端进行orderby的字段，用,分割开
 	 String limit = "50";
@@ -141,14 +133,6 @@ public class StoreInfo implements Serializable {
 		this.filter = filter;
 	}
 
-	public com.base.myproject.client.busi.BaseStore getParent() {
-		return parent;
-	}
-
-	public void setParent(com.base.myproject.client.busi.BaseStore parent) {
-		this.parent = parent;
-	}
-
 	public String[] getLinkparentcolumns() {
 		return linkparentcolumns;
 	}
@@ -186,10 +170,7 @@ public class StoreInfo implements Serializable {
 		return needAllRow;
 	}
 
-	/**
-	 * @param need_total_row_num
-	 *            the need_total_row_num to set
-	 */
+
 	public void setNeedAllRow(String needAllRow) {
 		this.needAllRow = needAllRow;
 	}
@@ -258,9 +239,6 @@ public class StoreInfo implements Serializable {
 		if (getBusicode() != null) {
 			parmas.put("busicode" ,getBusicode());
 		}
-		if (Env.getEnvbcode() != null) {
-			parmas.put("env_bcode" ,Env.getEnvbcode());
-		}
 
 		return parmas;
 	}
@@ -306,7 +284,7 @@ public class StoreInfo implements Serializable {
 		if (getBusicode() != null) {
 			sbf.append("&busicode=" + getBusicode());
 		}
-		sbf.append("&env_bcode=" + Env.getEnvbcode());
+
 		return new String(sbf);
 	}
 
@@ -365,13 +343,7 @@ public HashMap<String, String> getBusiparmas() {
 	public void setBusiparmas(HashMap<String, String> busiparmas) {
 		this.busiparmas = busiparmas;
 	}
-	/**
-	 * @see BaseStore add( M modeldata, final boolean b, boolean forjdbc)
-	 * 大概在650行，
-	 * zgw 2010-10-04
-	 * @param key
-	 * @param value
-	 */
+
 	public void addBusiParams(String key,String value)
 	{
 		this.busiparmas.put(key, value);
@@ -429,12 +401,6 @@ public void setSqlmacro(HashMap<String, String> sqlmacro) {
 	this.sqlmacro = sqlmacro;
 }
 
-public PagingToolBar getPagetoolbar() {
-	return pagetoolbar;
-}
 
-public void setPagetoolbar(PagingToolBar pagetoolbar) {
-	this.pagetoolbar = pagetoolbar;
-}
 
 }
