@@ -114,7 +114,7 @@ public class DataSet implements Serializable{
 		if(row>=getRowCount())
 		{
 			Row r = new Row();
-			addRow(r);
+			//addRow(r);
 			r.PutValue(name, value);
 			addRow(r);
 		}
